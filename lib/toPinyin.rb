@@ -30,15 +30,18 @@ end
 def unicode
 
 	scan(/./mu).map do |c| 
-	    #conver to unicode
-		Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
+	    #option 1 : use Iconv
+		#Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
+		#option 2 : 
+		sprintf("%04X", c.unpack("U*").first) 
 	end
 end
 
 def pinyin 
 	scan(/./mu).map do |c| 
 	    #conver to unicode
-		u = Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
+		#u = Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
+		u=sprintf("%04X", c.unpack("U*").first) 
 		uniToPyMap[u.upcase]
  	end
 end

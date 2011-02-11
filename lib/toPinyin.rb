@@ -1,7 +1,6 @@
 
 require 'iconv'
-require './toPinyin/uniToPyMap'
-
+require File.join(File.dirname(__FILE__),'toPinyin/uniToPyMap')
 
 #The string should be UTF-8 encoded
 class String

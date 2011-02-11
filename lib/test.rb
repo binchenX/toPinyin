@@ -11,28 +11,30 @@ raise "toUnicode failed" if s.unicode != ["6625", "82B1", "79CB", "6708", "4F55"
 #let's sort it 
 
 words = "
-检查
-我们
-的二
-进制
-是否
-适合
-你的
-平台".split("\n")
+人
+没有
+理想
+跟
+咸鱼
+有
+什么
+区别
+".split("\n")
 
 #for debug
 #words.each {|w| puts w.pinyin.inspect ; puts w.unicode.inspect ; puts w.utf8.inspect}
 words.sort! {|a ,b|   a.pinyin.join <=> b.pinyin.join }
 
 sorted = "
-的二
-检查
-进制
-你的
-平台
-适合
-是否
-我们".split("\n")
+跟
+理想
+没有
+区别
+人
+什么
+咸鱼
+有
+".split("\n")
 
 raise "sort failed" if words.join != sorted.join
 

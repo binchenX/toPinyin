@@ -16,6 +16,7 @@ class String
                |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
                )*\z/mnx
 
+	@@mm = uniToPyMap
 
 def utf8?	
 	self =~ UTF8REGEX
@@ -41,17 +42,19 @@ def validate_utf8
       Iconv.iconv('UTF-8//IGNORE', 'UTF-8', (self + ' ') ).first[0..-2]
 end
 
-def pinyin 
+def pinyin
+
 	scan(/./mu).map do |c| 
 	    #conver to unicode
 		#u = Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
 		u=sprintf("%04X", c.unpack("U*").first) 
 		#handle a-z, A-Z
-		if u =~ /^00/ 
+		if  u =~ /^00/ 
 			#return c as it is
 			c
 		else
-			uniToPyMap[u.upcase].chop unless uniToPyMap[u.upcase].nil?
+			m = @@mm[u]
+			m.chop unless m.nil?
 		end
  	end
 end

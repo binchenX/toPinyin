@@ -37,12 +37,17 @@ def unicode
 	end
 end
 
+# cf. Paul Battley, http://po-ru.com/diary/fixing-invalid-utf-8-in-ruby-revisited/
+def validate_utf8
+      Iconv.iconv('UTF-8//IGNORE', 'UTF-8', (self + ' ') ).first[0..-2]
+end
+
 def pinyin 
 	scan(/./mu).map do |c| 
 	    #conver to unicode
 		#u = Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
 		u=sprintf("%04X", c.unpack("U*").first) 
-		uniToPyMap[u.upcase]
+		uniToPyMap[u.upcase].chop #remove the accent
  	end
 end
 

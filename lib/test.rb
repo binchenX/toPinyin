@@ -8,6 +8,11 @@ raise "toPinyin faild" if s.pinyin != ["chun", "hua", "qiu", "yue", "he", "shi",
 raise "toUnicode failed" if s.unicode != ["6625", "82B1", "79CB", "6708", "4F55", "65F6", "4E86"]
 
 
+#should return nil
+puts "test".unicode.inspect
+puts "test".utf8.inspect
+raise "fail to convert english words" if "test".pinyin != ["t","e","s","t"]
+
 #let's sort it 
 
 words = "

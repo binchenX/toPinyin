@@ -46,7 +46,13 @@ def pinyin
 	    #conver to unicode
 		#u = Iconv.iconv("UNICODEBIG","utf-8",c)[0].each_byte.map {|b| b.to_s(16)}.join
 		u=sprintf("%04X", c.unpack("U*").first) 
-		uniToPyMap[u.upcase].chop #remove the accent
+		#handle a-z, A-Z
+		if u =~ /^00/ 
+			#return c as it is
+			c
+		else
+			uniToPyMap[u.upcase].chop unless uniToPyMap[u.upcase].nil?
+		end
  	end
 end
 

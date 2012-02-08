@@ -1,3 +1,4 @@
+# encoding: utf-8
 #generated using following code
 #t = File.read("Uni2Pinyin").split("\n").reject{|l| l.include?("#")}.inject(h={}) { |h,l| t = l.split("\t") ; h[t[0]]=t[1] ; h}
 #t.keys.sort.each {|k| puts "\"#{k}\" => \"#{t[k]}\","}
@@ -11308,7 +11309,7 @@ def uniToPyMap
 "7A22" => "yu4",
 "7A23" => "su1",
 "7A24" => "lue4",
-"7A25" => "xiang,
+"7A25" => "xiang",
 "7A26" => "yi1",
 "7A27" => "xi4",
 "7A28" => "bian1",
@@ -17641,7 +17642,7 @@ def uniToPyMap
 "92DF" => "qin2",
 "92E0" => "shen4",
 "92E1" => "han2",
-"92E2" => "l«¦4",
+"92E2" => "lu:e4",
 "92E3" => "ye2",
 "92E4" => "chu2",
 "92E5" => "zeng4",

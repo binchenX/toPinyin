@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 require 'toPinyin'
 
 s = "春花秋月何时了"
